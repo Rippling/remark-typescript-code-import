@@ -1,0 +1,54 @@
+{
+  "name": "remark-typescript-code-import",
+  "version": "0.1.0",
+  "description": "A remark plugin to import code from typescript files",
+  "license": "Apache-2.0",
+  "repository": "Rippling/remark-typescript-code-import",
+  "bugs": "https://github.com/Rippling/remark-typescript-code-import/issues",
+  "author": "Divyansh Kumar <mr.divyanshindore@gmail.com>",
+  "keywords": [
+    "code import",
+    "markdown",
+    "mdast",
+    "mdx",
+    "plugin",
+    "remark-plugin",
+    "remark",
+    "typescript",
+    "unified"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "sideEffects": false,
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf dist",
+    "format": "prettier --write .",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build",
+    "release": "standard-version",
+    "test": "npm run build && vitest",
+    "watch": "npm run build -- --watch"
+  },
+  "dependencies": {
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "mdast": "^3.0.0",
+    "mdast-util-directive": "^3.0.0",
+    "mdast-util-mdx-jsx": "^3.0.0",
+    "prettier": "3.2.4",
+    "remark": "^15.0.1",
+    "remark-directive": "^3.0.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3",
+    "vfile": "^6.0.1",
+    "vitest": "^1.2.2"
+  }
+}
