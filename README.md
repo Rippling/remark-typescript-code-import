@@ -47,7 +47,7 @@ The following script:
 import { remark } from 'remark';
 import path from 'node:path';
 import remarkDirectivePlugin from 'remark-directive';
-import { read } from 'to-vfile'
+import { read } from 'to-vfile';
 
 const result = await remark()
   .use(remarkDirectivePlugin)
@@ -63,7 +63,7 @@ yields:
 ```tsx
 type ComponentProps = {
   propA: string;
-}
+};
 ```
 ````
 
@@ -85,7 +85,6 @@ It supports multiple files and types
 - `fileAttrName: string`: The attribute name for file path. Defaults to `file`.
 - `rootDir: string`: Change what `<rootDir>` refers to. Defaults to `process.cwd()`.
 - `reactDocGenOptions: object`: Options for [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript?tab=readme-ov-file#options).
-
 
 ## Testing
 

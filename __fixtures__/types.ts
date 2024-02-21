@@ -1,7 +1,7 @@
 type People = {
   name: string;
   age: number;
-}
+};
 
 interface Employee {
   name: string;
@@ -15,5 +15,5 @@ class Person {
 
 const person = {
   name: 'John',
-  age: 20
+  age: 20,
 };

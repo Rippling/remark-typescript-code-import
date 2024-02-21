@@ -149,7 +149,10 @@ const plugin = ({
           type: 'code',
           lang: 'tsx',
           meta: Object.entries(restAttrs)
-            .reduce((acc, [key, value]) => value ? `${acc} ${key}="${value}"` : acc, '')
+            .reduce(
+              (acc, [key, value]) => (value ? `${acc} ${key}="${value}"` : acc),
+              ''
+            )
             .trim(),
           value: sourceCodes.join('\n\n'),
         });
