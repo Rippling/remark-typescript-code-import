@@ -82,9 +82,8 @@ It supports multiple files and types
 ## Options
 
 - `directiveName: string`: The directive name. Defaults to `component-docs`.
-- `fileAttrName: string`: The attribute name for file path. Defaults to `file`.
+- `fileAttributeName: string`: The attribute name for file path. Defaults to `file`.
 - `rootDir: string`: Change what `<rootDir>` refers to. Defaults to `process.cwd()`.
-- `reactDocGenOptions: object`: Options for [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript?tab=readme-ov-file#options).
 
 ## Testing
 

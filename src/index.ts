@@ -6,7 +6,7 @@ import * as ts from 'typescript';
 
 export type PluginOptions = {
   directiveName?: string;
-  fileAttrName?: string;
+  fileAttributeName?: string;
   rootDir?: string;
 };
 
@@ -64,7 +64,7 @@ function extract(file: string, identifiers: string[]) {
 
 const plugin = ({
   directiveName = 'typescript',
-  fileAttrName = 'file',
+  fileAttributeName = 'file',
   rootDir = process.cwd(),
 }: PluginOptions = {}) => {
   return async (tree: Root, vfile: any) => {
@@ -100,12 +100,12 @@ const plugin = ({
         }
 
         const attributes = node.attributes || {};
-        const { [fileAttrName]: fileMetadata, ...restAttrs } = attributes;
+        const { [fileAttributeName]: fileMetadata, ...restAttrs } = attributes;
 
         if (!fileMetadata) {
           vfile.fail(
             `
-            ${directiveName} directive must have ${fileAttrName} attribute.
+            ${directiveName} directive must have ${fileAttributeName} attribute.
             
             ${getHelpersText({ directiveName })}
             `,
