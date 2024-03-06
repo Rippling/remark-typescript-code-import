@@ -41,7 +41,9 @@ test('Directive used as textDirective', async () => {
 });
 
 test('Directive used as containerDirective', async () => {
-  const inputData = vfile(`:::typescript{file="./__fixtures__/types.ts#People"}\n\n:::`);
+  const inputData = vfile(
+    `:::typescript{file="./__fixtures__/types.ts#People"}\n\n:::`
+  );
 
   try {
     await remark()
@@ -69,57 +71,67 @@ test('No `file` attribute provided', async () => {
 });
 
 test('Valid usage', async () => {
-  const inputData = vfile('::typescript{file="./__fixtures__/types.ts#People"}');
+  const inputData = vfile(
+    '::typescript{file="./__fixtures__/types.ts#People"}'
+  );
 
   const result = await remark()
     .use(remarkDirectivePlugin)
     .use(remarkTypescriptCodeImport)
     .process(inputData);
-  
+
   expect(result.toString()).toMatchInlineSnapshot(`
   "\`\`\`tsx
   type People = {
     name: string;
     age: number;
-  }
+  };
   \`\`\`
   "
   `);
 });
 
 test('Valid usage with <rootDir>', async () => {
-  const inputData = vfile('::typescript{file="<rootDir>/__fixtures__/types.ts#People"}');
+  const inputData = vfile(
+    '::typescript{file="<rootDir>/__fixtures__/types.ts#People"}'
+  );
 
   const result = await remark()
     .use(remarkDirectivePlugin)
     .use(remarkTypescriptCodeImport)
     .process(inputData);
-  
+
   expect(result.toString()).toMatchInlineSnapshot(`
   "\`\`\`tsx
   type People = {
     name: string;
     age: number;
-  }
+  };
   \`\`\`
   "
   `);
 });
 
 test('Used Options', async () => {
-  const inputData = vfile('::type{filePath="<rootDir>/../__fixtures__/types.ts#People" additionalProp="value"}');
+  const inputData = vfile(
+    '::type{filePath="<rootDir>/../__fixtures__/types.ts#People" additionalProp="value"}'
+  );
 
   const result = await remark()
     .use(remarkDirectivePlugin)
-    .use(remarkTypescriptCodeImport, { directiveName: 'type', fileAttrName: 'filePath', rootDir: `${cwd}/src`, })
+    .use(remarkTypescriptCodeImport, {
+      directiveName: 'type',
+      fileAttrName: 'filePath',
+      rootDir: `${cwd}/src`,
+    })
     .process(inputData);
-  
+
   expect(result.toString()).toMatchInlineSnapshot(`
   "\`\`\`tsx additionalProp="value"
   type People = {
     name: string;
     age: number;
-  }
+  };
   \`\`\`
   "
   `);
