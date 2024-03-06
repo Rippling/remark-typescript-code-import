@@ -121,7 +121,7 @@ test('Used Options', async () => {
     .use(remarkDirectivePlugin)
     .use(remarkTypescriptCodeImport, {
       directiveName: 'type',
-      fileAttrName: 'filePath',
+      fileAttributeName: 'filePath',
       rootDir: `${cwd}/src`,
     })
     .process(inputData);
