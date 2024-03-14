@@ -62,7 +62,7 @@ function extract(file: string, identifiers: string[]) {
   return { result };
 }
 
-const plugin = ({
+const attacher = ({
   directiveName = 'typescript',
   fileAttributeName = 'file',
   rootDir = process.cwd(),
@@ -81,12 +81,13 @@ const plugin = ({
         if (node.type === 'textDirective') {
           vfile.fail(
             `
-            Unexpected \':${directiveName}\` text directive, use two colons for a leaf directive
+            Unexpected ':${directiveName}' text directive, use two colons for a leaf directive
             
             ${getHelpersText({ directiveName })}
             `,
             node
           );
+          return;
         }
         if (node.type !== 'leafDirective') {
           vfile.fail(
@@ -97,6 +98,7 @@ const plugin = ({
             `,
             node
           );
+          return;
         }
 
         const attributes = node.attributes || {};
@@ -161,4 +163,4 @@ const plugin = ({
   };
 };
 
-export default plugin;
+export default attacher;
