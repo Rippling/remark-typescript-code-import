@@ -20,7 +20,5 @@ export default defineConfig({
     ssr: true,
     target: tsConfig.compilerOptions.module,
   },
-  plugins: [
-    dts(),
-  ],
+  plugins: [dts()],
 });
